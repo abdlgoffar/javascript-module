@@ -1,0 +1,38 @@
+<!-- 
+    js module adalah proses peng import tan data berupa class, fucntion atau variable secara satu persatu, seperti contoh di bawah.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="button" id="button">
+
+
+    <!-- BASIC MODULE -->
+    <script type="module">
+        import {hello, name, hoby} from "./library.mjs"//syarat access js module
+        import {Person} from "./library2.mjs"//syarat access js module
+        console.log(hello("abdul goffar"));
+        console.log(hoby);
+        const Goffar = new Person();
+        console.log(Goffar.name());
+    </script>
+
+
+    <!-- DYNAMIC MODULE -->
+    <!-- dynamic module adalah module yg akan di inport apabila statement nya dikerjakan, jadi akan jauh lebih irit memory-->
+    <script type="module">
+        document.getElementById("button").onclick = function () {
+            //cara menerapkan dynamic module
+            import("./library3.mjs").then(module => {
+                console.log(module.say());
+            })
+        }
+    </script>
+</body>
+</html>
